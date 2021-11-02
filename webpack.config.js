@@ -13,7 +13,7 @@ module.exports = {
   devServer: {
     
     static: {
-      directory: path.join(__dirname, 'build'), 
+      directory: path.resolve(__dirname, 'build'), 
       publicPath: './build',
     },
     proxy: {
@@ -21,7 +21,7 @@ module.exports = {
     },
   },
   plugins: [new HtmlWebpackPlugin({
-    template: 'index.html',
+    template: './build/index.html',
   })],
   module: {
     rules: [{
@@ -39,5 +39,8 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'sass-loader']
     }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 };

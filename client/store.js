@@ -13,13 +13,14 @@
  import { composeWithDevTools } from 'redux-devtools-extension';
  import thunk from 'redux-thunk';
  import reducers from './reducers/index';
- import { loadMarkets } from './actions/actions';
+//  import { loadMarkets } from './actions/actions';
  
  const store = createStore(
    reducers,
    composeWithDevTools(applyMiddleware(thunk)),
  );
  
- store.dispatch(loadMarkets());
+ // TODO edit this
+ //store.dispatch(loadMarkets());
  
  export default store;
