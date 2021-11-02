@@ -9,20 +9,30 @@
  * ************************************
  */
 
- import React from 'react';
- import { connect } from 'react-redux';
- import { bindActionCreators } from 'redux';
- import * as actions from '../actions/actions';
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+// import { ProgressPlugin } from 'webpack';
+import * as actions from '../actions/actions';
+import Order from '../components/Order';
 
- const mapStateToProps = () => {
-
- };
+const mapStateToProps = ({stocks}) => ({
+  orderList: stocks.orderList,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-const OrdersContainer = () => (
+const orderMaker = (el, i) => {
+  const {ticker, type, price, timestamp, expiration} = el;
+  return <Order ticker={ticker} type={type} price={price} timestamp={timestamp} expiration={expiration} key={i.toString()}/>
+};
+
+const OrdersContainer = (props) => (
   <div className="orders">
-    <h2>Orders</h2>
+    <h2 className="header">Orders</h2>
+    <div>
+      {props.orderList.map((el, i) => orderMaker(el, i))}
+    </div>
   </div>
 );
 

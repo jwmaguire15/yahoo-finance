@@ -14,19 +14,27 @@
 //  import TotalsDisplay from '../components/TotalsDisplay';
 //  import MarketsContainer from './MarketsContainer';
  import * as actions from '../actions/actions';
+import OrdersContainer from './OrdersContainer';
+import PortfolioContainer from './PortfolioContainer';
+import SearchContainer from './SearchContainer';
+import TransactionsContainer from './TransactionsContainer';
  
- const mapStateToProps = () => {
+ const mapStateToProps = () => ({
    
- }
+ })
 
- const mapDispatchToProps = () => {
+ const mapDispatchToProps = () => ({
 
- }
+ })
 
  const MainContainer = () => (
    <div className="container">
      <div className="outerBox">
-       <h1 id="header">Stock Portfolio Management</h1>
+       <h1 className="header">Stock Portfolio Management</h1>
+       <OrdersContainer></OrdersContainer>
+       <SearchContainer></SearchContainer>
+       <TransactionsContainer></TransactionsContainer>
+       <PortfolioContainer></PortfolioContainer>
      </div>
    </div>
  )

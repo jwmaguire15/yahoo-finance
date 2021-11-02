@@ -13,8 +13,24 @@
 
  const initialState = {
    searchBar: '',
-   orderList: [],
-   transactionList: [],
+   orderList: [
+     {
+      ticker: 'ABC',
+      type: 'BUY',
+      price: 100,
+      timestamp: new Date(Date.now()).toJSON(),
+      expiration: '1/2/2021'
+     },
+    ],
+   transactionList: [
+    {
+      ticker: 'ABC',
+      type: 'SELL',
+      price: 100,
+      timestamp: new Date(Date.now()).toJSON(),
+      expiration: '1/2/2021'
+     },
+   ],
    stockList: [],
  };
  

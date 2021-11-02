@@ -14,15 +14,20 @@
  import { bindActionCreators } from 'redux';
  import * as actions from '../actions/actions';
 
- const mapStateToProps = () => {
+ const mapStateToProps = () => ({
 
- };
+ });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 const PortfolioContainer = () => (
   <div className="portfolio">
-    <h2>Your Portfolio</h2>
+    <h2 className="header">Your Portfolio</h2>
+    <ul>
+      <li>James</li>
+      <li>James</li>
+      <li>James</li>
+    </ul>
   </div>
 );
 

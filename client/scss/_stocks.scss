@@ -1,0 +1,129 @@
+html{ 
+  font-size: calc(12px + (16 - 12) * (100vw - 400px)/(800 - 400));
+  // font-size: 1vw;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Ubuntu Light', 'Century Gothic', sans-serif;
+  margin: 2fr;
+  padding: 2fr;
+  color: #393939;
+}
+
+body {
+  padding-top: 1em;
+}
+
+.header {
+  grid-area: header;
+  justify-content: center;
+  text-align: center;
+}
+.searchContainer {
+  grid-area: search;
+}
+.transactions {
+  grid-area: transactions;
+}
+.orders {
+  grid-area: orders;
+}
+.portfolio {
+  grid-area: portfolio;
+}
+
+ul {
+  border: 1px solid #393939;
+  list-style-type: none;
+  margin: 0;
+  padding: 0.5em;
+}
+
+li {
+  border: 1px solid #393939;
+  list-style-type: none;
+  margin-top: .25em;
+  margin-bottom: .25em;
+  padding: 0.5em;
+}
+
+table {
+  display: grid;
+  border-collapse: collapse;
+  min-width: 100%;
+  /* These are just initial values which are overriden using JavaScript when a column is resized */
+  grid-template-columns: 
+    minmax(50px, 1fr)
+    minmax(50px, 1fr)
+    minmax(50px, 1fr);
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: $darkShades;
+  font-weight: normal;
+  font-size: 1em;
+  color: white;
+  position: relative;
+}
+
+th:last-child {
+  border: 0;
+}
+
+td {
+  color: #808080;
+  font-size: 0.9em;
+}
+
+tr:nth-child(even) td {
+  background: #f8f6ff;
+}
+
+.outerBox {
+  max-width: 100%;
+  margin: 0;
+  padding: $p0;
+  box-shadow: $highShadow;
+  border-radius: 5px;
+  border: $lightBorder;
+  background-color: $lightGray;
+}
+
+.outerBox {
+  display: grid;
+  gap: 1vw;
+  grid-template-rows:
+    "header"
+    "search"
+    "your portfolio"
+    "orders"
+    "transactions"
+}
+
+@media (min-width: 700px) {
+  .outerBox {
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "orders search transactions"
+      "orders portfolio transactions"
+      "footer footer footer"
+   }
+}
