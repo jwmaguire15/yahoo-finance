@@ -36,6 +36,13 @@
  
  const stocksReducer = (state = initialState, action) => {
    switch (action.type) {
+     case types.UPDATE_SEARCH:
+      console.log(searchBar);
+      return {
+        ...state,
+        searchBar: action.payload,
+      };
+    
      default:
        return state;
    }

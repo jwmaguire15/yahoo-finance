@@ -9,20 +9,32 @@
  * ************************************
  */
 
- import React from 'react';
- import { connect } from 'react-redux';
- import { bindActionCreators } from 'redux';
- import * as actions from '../actions/actions';
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/actions';
+import SearchBar from '../components/SearchBar';
 
- const mapStateToProps = () => ({
-
- });
+const mapStateToProps = ({ stocks }) => ({
+  searchBar: stocks.searchBar,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-const SearchContainer = () => (
+// ({
+//   updateSearch: (data) => dispatch(actions.updateSearch(data)),
+//   buyStock: () => dispatch(actions.buyStock()),
+// });
+
+const SearchContainer = (props) => (
   <div className="searchContainer">
     <h2 className="header">Search</h2>
+    {/* <StockChart /> */}
+    <SearchBar
+      searchBar={props.searchBar}
+      updateSearch={props.updateSearch}
+      buyStock={props.buyStock}
+    />
   </div>
 );
 

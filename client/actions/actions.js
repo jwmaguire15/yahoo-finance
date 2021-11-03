@@ -15,10 +15,14 @@
 import axios from 'axios';
 import * as types from '../constants/actionTypes';
 
-// export const updateLocation = data => ({
-//   type: types.UPDATE_LOCATION,
-//   payload: data,
-// });
+export const updateSearch = data => ({
+  type: types.UPDATE_SEARCH,
+  payload: data,
+});
+
+export const buyStock = () => ({
+  type: types.BUY_STOCK,
+});
 
 // export const addCard = id => ({
 //   type: types.ADD_CARD,
