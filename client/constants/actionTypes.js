@@ -17,5 +17,6 @@
  export const DELETE_TRANSACTION = 'DELETE_TRANSACTION';
  export const UPDATE_SEARCH = 'UPDATE_SEARCH';
  export const BUY_STOCK = 'BUY_STOCK'
+ export const SEARCH_STOCK = 'SEARCH_STOCK'
  
 //  export const LOAD_MARKETS = 'LOAD_MARKETS';

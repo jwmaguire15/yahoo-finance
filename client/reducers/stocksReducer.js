@@ -34,18 +34,31 @@
    stockList: [],
  };
  
+ 
  const stocksReducer = (state = initialState, action) => {
+   console.log(state);
    switch (action.type) {
      case types.UPDATE_SEARCH:
-      console.log(searchBar);
-      return {
-        ...state,
-        searchBar: action.payload,
-      };
-    
-     default:
-       return state;
-   }
+       return {
+         ...state,
+         searchBar: action.payload,
+        };
+        
+      case types.BUY_STOCK: 
+        return state;
+      // should: 
+      // 1. check for valid input from user  
+      // 2. create an order at current market price
+      // 3. clear stock search bar
+      
+      case types.SEARCH_STOCK: 
+        return {
+          ...state,
+        }
+
+        default:
+          return state;
+        }
  };
  
  export default stocksReducer;

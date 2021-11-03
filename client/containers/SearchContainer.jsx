@@ -33,7 +33,7 @@ const SearchContainer = (props) => (
     <SearchBar
       searchBar={props.searchBar}
       updateSearch={props.updateSearch}
-      buyStock={props.buyStock}
+      searchStock={props.searchStock}
     />
   </div>
 );

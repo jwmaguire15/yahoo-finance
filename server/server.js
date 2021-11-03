@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static(path.resolve(__dirname, '../build')));
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -22,9 +22,13 @@ app.use('/search', searchRouter);
 app.use('/transaction', transactionRouter);
 
 // respond with main app 
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname, '../build/bundle.js'))
-});
+// TODO - FIGURE OUT IF THIS IS RIGHT!
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, '../build')));
+  app.get('/', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, '../build/bundle.js'))
+  });
+}
 
 app.use(({ code, error }, req, res, next) => {
   res.status(code).json({ error });

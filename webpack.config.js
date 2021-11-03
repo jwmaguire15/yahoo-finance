@@ -8,20 +8,19 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build') 
+    path: path.resolve(__dirname, 'build')
   },
   devServer: {
-    
     static: {
-      directory: path.resolve(__dirname, 'build'), 
+      directory: path.resolve(__dirname, 'build'),
       publicPath: './build',
     },
     proxy: {
-      '/api': 'http://localhost:3000'
+      '/': 'http://localhost:3000'
     },
   },
   plugins: [new HtmlWebpackPlugin({
-    template: './build/index.html',
+    template: './index.html',
   })],
   module: {
     rules: [{
@@ -30,9 +29,10 @@ module.exports = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react']
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
         }
-      }
+      },
     },
     {
       test: /\.s[ac]ss$/i,

@@ -24,6 +24,23 @@ export const buyStock = () => ({
   type: types.BUY_STOCK,
 });
 
+export const searchStock = () => (dispatch, getState) => {
+  console.log('called?')
+  const options = {
+    method: 'GET',
+    url: '/search',
+    data: {symbol: getState().stocks.searchBar},
+  }
+  axios.request(options).then((response) => {
+    console.log(response.data)
+    if (response.status = 200) dispatch({
+      type: types.SEARCH_STOCK,
+      payload: data, 
+    });
+  }).catch(console.error)
+  
+};
+
 // export const addCard = id => ({
 //   type: types.ADD_CARD,
 //   payload: id,
