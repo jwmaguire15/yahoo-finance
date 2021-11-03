@@ -23,13 +23,13 @@ const SearchBar = ({
     <div>
       {/* <form onSubmit={buyStock}> */}
       <input
-        id="search"
-        value={searchBar}
-        onChange={e => {
+        id="userInput"
+        onInput={(e) => {
           console.log(e);
           console.log(e.target.value);
-          return updateSearch(e.target.value);
+          // return updateSearch(e.target.value);
         }}
+        value={searchBar}
       />
       <button id='buy-stock' className="primary" type="submit">BUY!</button>
       {/* </form> */}
