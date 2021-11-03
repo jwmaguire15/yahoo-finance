@@ -35,7 +35,7 @@ export const searchStock = () => (dispatch, getState) => {
     console.log(response.data)
     if (response.status = 200) dispatch({
       type: types.SEARCH_STOCK,
-      payload: data, 
+      payload: response.data, 
     });
   }).catch(console.error)
   

@@ -14,9 +14,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 import SearchBar from '../components/SearchBar';
+import StockChart from '../components/StockChart';
 
 const mapStateToProps = ({ stocks }) => ({
   searchBar: stocks.searchBar,
+  chartData: stocks.chartData,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
@@ -29,7 +31,9 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 const SearchContainer = (props) => (
   <div className="searchContainer">
     <h2 className="header">Search</h2>
-    {/* <StockChart /> */}
+    <div>
+      {StockChart(props.chartData)}
+    </div>
     <SearchBar
       searchBar={props.searchBar}
       updateSearch={props.updateSearch}
