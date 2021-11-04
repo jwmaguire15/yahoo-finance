@@ -13,6 +13,7 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
   searchBar: '',
+  range: '1d',
   chartData: [],
   orderList: [
     {
@@ -44,6 +45,12 @@ const stocksReducer = (state = initialState, action) => {
         ...state,
         searchBar: action.payload,
       };
+    case types.UPDATE_RANGE:
+      console.log(action.payload);
+      return {
+        ...state,
+        range: action.payload,
+      };
 
     case types.BUY_STOCK:
       return state;
@@ -58,7 +65,7 @@ const stocksReducer = (state = initialState, action) => {
       const price = raw['chart']['result'][0]['indicators']['quote'][0]['close'];
 
       const data = [];
-      for(let i = 0; i < time.length; i++) {
+      for (let i = 0; i < time.length; i++) {
         data.push({
           name: new Date(time[i] * 1000),
           price: price[i],

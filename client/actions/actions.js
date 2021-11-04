@@ -20,16 +20,26 @@ export const updateSearch = data => ({
   payload: data,
 });
 
+export const updateRange = data => ({
+  type: types.UPDATE_RANGE,
+  payload: data,
+});
+
 export const buyStock = () => ({
   type: types.BUY_STOCK,
 });
 
 export const searchStock = () => (dispatch, getState) => {
-  console.log('called?')
+  const sym = getState().stocks.searchBar;
+  const range = getState().stocks.range;
+  let ivl = '1d';
+  if(range.includes('d') && range != 'ytd') ivl = '5m';
+  console.log('vars:', ivl, sym, range)
   const options = {
     method: 'GET',
     url: '/search',
-    data: {symbol: getState().stocks.searchBar},
+    // grab symbol from state, grab interval from state
+    params: {interval: ivl, symbol: sym, range: range, region: 'US'}
   }
   axios.request(options).then((response) => {
     console.log(response.data)
