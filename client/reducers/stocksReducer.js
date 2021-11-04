@@ -15,6 +15,7 @@ const initialState = {
   searchBar: '',
   range: '1d',
   chartData: [],
+  user_id: 1,
   orderList: [
     {
       ticker: 'ABC',

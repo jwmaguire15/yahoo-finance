@@ -30,8 +30,15 @@ if(process.env.NODE_ENV === 'production') {
   });
 }
 
-app.use(({ code, error }, req, res, next) => {
-  res.status(code).json({ error });
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred on line 37 of Server.js' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
 module.exports = app.listen(port, () => console.log(`Listening on port ${port}`));

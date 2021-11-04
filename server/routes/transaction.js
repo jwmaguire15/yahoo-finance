@@ -1,9 +1,11 @@
 const express = require('express');
-// const fileController = require('../controllers/fileController');
+const searchController = require('../controllers/searchController');
+const transactionController = require('../controllers/transactionController');
 const router = express.Router();
 
-router.get('/', /*fileController.getCharacters,*/ (req, res) => {
-  return res.status(200).json({});
+router.post('/', /*searchController.getCurrentPrice,*/ transactionController.postTransaction, (req, res) => {
+  // send whatever is on locals back 
+  return res.status(201).json(res.locals.transaction);
 });
 
 module.exports = router;

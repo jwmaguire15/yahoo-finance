@@ -39,6 +39,7 @@ const SearchContainer = (props) => (
       updateSearch={props.updateSearch}
       updateRange={props.updateRange}
       searchStock={props.searchStock}
+      buyStock={props.buyStock}
     />
   </div>
 );

@@ -10,17 +10,15 @@
  */
 
 import React from 'react';
-import { updateRange } from '../actions/actions';
+// import { buyStock, updateRange } from '../actions/actions';
 
 const SearchBar = ({
   searchBar,
   updateSearch,
   updateRange,
   searchStock,
+  buyStock,
 }) => {
-  console.log('searchbar:', searchBar);
-  console.log('update search:', updateSearch);
-  console.log('buyStock:', updateSearch);
   return (
     <div>
       <input
@@ -49,6 +47,7 @@ const SearchBar = ({
         </select>
       </span>
       <button id='search-stock' className="primary" onClick={searchStock}>SEARCH</button>
+      <button id='buy-stock' className="primary" onClick={buyStock}>BUY!</button>
 
     </div>
   );
