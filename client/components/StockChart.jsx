@@ -12,14 +12,14 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+// TODO - get Y AXIS to re-size
 const StockChart = (chartData) => (
   <ResponsiveContainer width={500} height={250}>
-
     <LineChart width={500} height={250} data={chartData}
       margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
+      <XAxis dataKey="name" angle={0} tickLine={false}/>
+      <YAxis type="number" domain={['auto', 'auto']}/>
       <Tooltip />
       <Legend />
       <Line type="monotone" dataKey="price" stroke="#8884d8" />

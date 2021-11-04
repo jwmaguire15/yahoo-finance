@@ -66,10 +66,12 @@ const stocksReducer = (state = initialState, action) => {
 
       const data = [];
       for (let i = 0; i < time.length; i++) {
+        
         data.push({
           name: new Date(time[i] * 1000),
+          // name: date,
           price: price[i],
-          time: time[i],
+          // time: time[i],
         });
       }
       console.log(data);
