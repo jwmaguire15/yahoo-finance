@@ -33,6 +33,22 @@ body {
   grid-area: portfolio;
 }
 
+.searchBar{
+  display: flex;
+  justify-content: space-around;
+}
+
+.order {
+  span {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+label {
+  margin: 5px
+}
+
 ul {
   border: 1px solid #393939;
   list-style-type: none;
@@ -46,54 +62,6 @@ li {
   margin-top: .25em;
   margin-bottom: .25em;
   padding: 0.5em;
-}
-
-table {
-  display: grid;
-  border-collapse: collapse;
-  min-width: 100%;
-  /* These are just initial values which are overriden using JavaScript when a column is resized */
-  grid-template-columns: 
-    minmax(50px, 1fr)
-    minmax(50px, 1fr)
-    minmax(50px, 1fr);
-}
-
-thead,
-tbody,
-tr {
-  display: contents;
-}
-
-th,
-td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: center;
-}
-
-th {
-  position: sticky;
-  top: 0;
-  background: $darkShades;
-  font-weight: normal;
-  font-size: 1em;
-  color: white;
-  position: relative;
-}
-
-th:last-child {
-  border: 0;
-}
-
-td {
-  color: #808080;
-  font-size: 0.9em;
-}
-
-tr:nth-child(even) td {
-  background: #f8f6ff;
 }
 
 .outerBox {

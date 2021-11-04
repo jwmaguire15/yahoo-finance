@@ -16,20 +16,27 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 import Order from '../components/Order';
 
-const mapStateToProps = ({stocks}) => ({
+const mapStateToProps = ({ stocks }) => ({
   orderList: stocks.orderList,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 const orderMaker = (el, i) => {
-  const {ticker, type, price, timestamp, expiration} = el;
-  return <Order ticker={ticker} type={type} price={price} timestamp={timestamp} expiration={expiration} key={i.toString()}/>
+  const { ticker, price, timestamp } = el;
+  return <Order ticker={ticker} price={price} timestamp={timestamp} key={i.toString()} />
 };
 
 const OrdersContainer = (props) => (
   <div className="orders">
-    <h2 className="header">Orders</h2>
+    <h2 className="header">Bought</h2>
+    <div className="order">
+      <span>
+        <strong>Ticker</strong>
+        <strong>Price</strong>
+        <strong>Time</strong>
+      </span>
+    </div>
     <div>
       {props.orderList.map((el, i) => orderMaker(el, i))}
     </div>

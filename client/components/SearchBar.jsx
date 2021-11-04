@@ -20,7 +20,7 @@ const SearchBar = ({
   buyStock,
 }) => {
   return (
-    <div>
+    <div className="searchBar">
       <input
         id="userInput"
         onInput={(e) => {

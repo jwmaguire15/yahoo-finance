@@ -10,21 +10,18 @@
  */
 
  import React from 'react';
- import LabeledText from './LabeledText';
 
  const Order = ({
    ticker,
-   type,
    price,
    timestamp,
-   expiration,
  }) => (
    <div className="order">
-     <LabeledText label="Ticker" text={ticker} />
-     <LabeledText label="Type" text={type} />
-     <LabeledText label="Price" text={price} />
-     <LabeledText label="Submitted" text={timestamp} />
-     <LabeledText label="Expiration" text={expiration} />
+     <span>
+      <text>{ticker}</text>
+      <text>{price}</text>
+      <text>{timestamp.slice(0,7)}</text>
+     </span>
    </div>
  );
  
