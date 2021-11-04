@@ -13,7 +13,7 @@
  import { composeWithDevTools } from 'redux-devtools-extension';
  import thunk from 'redux-thunk';
  import reducers from './reducers/index';
-//  import { loadMarkets } from './actions/actions';
+ import { loadData } from './actions/actions';
  
  const store = createStore(
    reducers,
@@ -21,6 +21,6 @@
  );
  
  // TODO edit this
- //store.dispatch(loadMarkets());
+ store.dispatch(loadData());
  
  export default store;

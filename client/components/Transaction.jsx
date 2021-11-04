@@ -18,12 +18,15 @@
    price,
    timestamp,
  }) => (
-   <div className="order">
-     <LabeledText label="Ticker" text={ticker} />
-     <LabeledText label="Type" text={type} />
-     <LabeledText label="Price" text={price} />
-     <LabeledText label="Executed" text={timestamp} />
-   </div>
+  <li className="order">
+     
+      <text>{ticker}</text>
+      <text>{price}</text>
+      <text>{price}</text>
+      <text>{timestamp.slice(0,7)}</text>
+      <text>{price}</text>
+     
+   </li>
  );
  
  export default Transaction;

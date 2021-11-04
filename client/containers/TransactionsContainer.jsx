@@ -28,10 +28,19 @@ const transactionMaker = (el, i) => {
 
 const TransactionsContainer = (props) => (
   <div className="transactions">
-    <h2 className="header">Transactions</h2>
-    <div>
-      {props.transactionList.map((el, i) => transactionMaker(el, i))}
+    <h2 className="header">Sold</h2>
+    <div className="order">
+      <span>
+        <strong>Ticker</strong>
+        <strong>Basis</strong>
+        <strong>Price</strong>
+        <strong>Time</strong>
+        <strong>Gain</strong>
+      </span>
     </div>
+    <ul>
+      {props.transactionList.map((el, i) => transactionMaker(el, i))}
+    </ul>
   </div>
 );
 

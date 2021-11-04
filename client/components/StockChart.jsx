@@ -14,11 +14,11 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Responsi
 
 // TODO - get Y AXIS to re-size
 const StockChart = (chartData) => (
-  <ResponsiveContainer width={500} height={250}>
-    <LineChart width={500} height={250} data={chartData}
+  <ResponsiveContainer width={'100%'} height={250}>
+    <LineChart data={chartData}
       margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" angle={0} tickLine={false}/>
+      <XAxis dataKey="name" angle={0} tick={false}/>
       <YAxis type="number" domain={['auto', 'auto']}/>
       <Tooltip />
       <Legend />

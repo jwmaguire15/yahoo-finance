@@ -12,17 +12,18 @@
  import React from 'react';
 
  const Order = ({
+   transaction_id,
    ticker,
    price,
    timestamp,
+   sellStock,
  }) => (
-   <div className="order">
-     <span>
+   <li className="order">
       <text>{ticker}</text>
       <text>{price}</text>
       <text>{timestamp.slice(0,7)}</text>
-     </span>
-   </div>
+      <button id={transaction_id} onClick={e => sellStock(e.target.id)}>Sell</button>
+   </li>
  );
  
  export default Order;

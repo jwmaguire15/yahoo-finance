@@ -8,4 +8,9 @@ router.post('/', searchController.getCurrentPrice, transactionController.postTra
   return res.status(201).json(res.locals.transaction);
 });
 
+router.get('/', transactionController.getBuys, (req, res) => {
+  // send whatever is on locals back 
+  return res.status(201).json(res.locals.buys);
+});
+
 module.exports = router;

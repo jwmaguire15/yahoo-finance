@@ -22,24 +22,25 @@ const mapStateToProps = ({ stocks }) => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-const orderMaker = (el, i) => {
-  const { ticker, price, timestamp } = el;
-  return <Order ticker={ticker} price={price} timestamp={timestamp} key={i.toString()} />
+const orderMaker = (el, i, sellStock) => {
+  const { transaction_id, ticker, price, timestamp } = el;
+  return <Order transaction_id ={transaction_id} ticker={ticker} price={price} timestamp={timestamp} sellStock={sellStock} key={i.toString()} />
 };
 
 const OrdersContainer = (props) => (
   <div className="orders">
-    <h2 className="header">Bought</h2>
+    <h2 className="header">Owned</h2>
     <div className="order">
       <span>
         <strong>Ticker</strong>
         <strong>Price</strong>
         <strong>Time</strong>
+        <strong>Sell?</strong>
       </span>
     </div>
-    <div>
-      {props.orderList.map((el, i) => orderMaker(el, i))}
-    </div>
+    <ul>
+      {props.orderList.map((el, i) => orderMaker(el, i, props.sellStock))}
+    </ul>
   </div>
 );
 

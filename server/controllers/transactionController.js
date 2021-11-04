@@ -14,7 +14,7 @@ transactionController.postTransaction = async (req, res, next) => {
     const {symbols} = req.query;
     const stock_name = res.locals.price['result'][0]['shortName'];
     const bought_price = res.locals.price['result'][0]['ask'];
-    const values = [user_id, symbols, stock_name, bought_price]
+    const values = [user_id, symbols.toUpperCase(), stock_name, bought_price]
     const insertTransaction = `INSERT INTO transactions (user_id, stock_ticker, stock_name, bought_price)
       VALUES ($1, $2, $3, $4)
       RETURNING *`;
@@ -30,7 +30,19 @@ transactionController.postTransaction = async (req, res, next) => {
 
 // should get all buys 
 transactionController.getBuys = async (req, res, next) => {
-
+  try {
+    const {user_id}= req.query;
+    const values = [user_id]
+    const insertTransaction = `
+    SELECT * FROM transactions WHERE user_id = $1
+    `;
+    const reply = await db.query(insertTransaction, values);
+    res.locals.buys = reply.rows;
+    return next();
+  }
+  catch(err) {
+    return next(err)
+  }
 }
 
 // should get all sells

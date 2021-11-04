@@ -9,9 +9,6 @@
  * ************************************
  */
 
-// EDIT EVERYTHING IN HERE
-
-
 import axios from 'axios';
 import * as types from '../constants/actionTypes';
 
@@ -47,6 +44,28 @@ export const buyStock = () => (dispatch, getState) => {
   // hit reducer to update state with the new query of all transactions...
 };
 
+export const sellStock = (transaction_id) => (dispatch, getState) => {
+  // grab the symbol from state
+  console.log(transaction_id);
+  
+  const user_id = getState().stocks.user_id;
+  
+  const options = {
+    method: 'PUT',
+    url: '/transaction',
+    data: {user_id, transaction_id},
+  }
+  
+  axios.request(options).then((response) => {
+    if(response.status = 201) dispatch({
+      type: types.SELL_STOCK,
+      payload: response.data,
+    });
+  }).catch(console.error);
+  
+
+};
+
 export const searchStock = () => (dispatch, getState) => {
   const sym = getState().stocks.searchBar;
   const range = getState().stocks.range;
@@ -69,43 +88,18 @@ export const searchStock = () => (dispatch, getState) => {
   
 };
 
-// export const addCard = id => ({
-//   type: types.ADD_CARD,
-//   payload: id,
-// });
-
-// export const deleteCard = id => (dispatch, getState) => {
-//   if (getState().markets.marketList[id].cards > 0) {
-//     dispatch({ type: types.DELETE_CARD, payload: id });
-//   }
-// };
-
-// export const addMarket = event => (dispatch, getState) => {
-//   event.preventDefault();
-//   const location = getState().markets.newLocation;
-//   if (location) {
-//     dispatch({
-//       type: types.ADD_MARKET,
-//       payload: location,
-//     });
-//   }
-// };
-
-// export const syncMarkets = () => (dispatch, getState) => {
-//   axios.put('/markets', getState().markets.marketList)
-//     .then(({ status }) => {
-//       if (status === 200) dispatch({ type: types.SYNC_MARKETS });
-//     })
-//     .catch(console.error);
-// };
-
-// export const loadMarkets = () => (dispatch) => {
-//   axios.get('/markets')
-//     .then(({ data }) => {
-//       dispatch({
-//         type: types.LOAD_MARKETS,
-//         payload: data,
-//       });
-//     })
-//     .catch(console.error);
-// };
+export const loadData = () => (dispatch, getState) => {
+  // grab the symbol from state
+  const user_id = getState().stocks.user_id;
+  const options = {
+    method: 'GET',
+    url: '/transaction',
+    params: {user_id},
+  }
+  axios.request(options).then((response) => {
+    if(response.status = 201) dispatch({
+      type: types.BUY_STOCK,
+      payload: response.data,
+    });
+  }).catch(console.error);
+};
