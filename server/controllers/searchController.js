@@ -37,7 +37,7 @@ searchController.getCurrentPrice = async (req, res, next) => {
   };
   try {
     const response = await axios.request(options);
-    res.locals.price = response.data;
+    res.locals.price = response.data['quoteResponse'];
     return next();
   }
   catch (err) {

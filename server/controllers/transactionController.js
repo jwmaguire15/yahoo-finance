@@ -11,13 +11,9 @@ transactionController.postTransaction = async (req, res, next) => {
   try {
     // to do get these values off the req and the res.locals
     const {user_id}= req.body;
-    console.log(user_id);
-    // const {symbols} = req.query;
-    const symbols = 'AAPL';
-    // const stock_name = res.locals.price['result'][0]['shortName'];
-    const stock_name = 'Apple';
-    // const bought_price = res.locals.price['result'][0]['ask'];
-    const bought_price = 31;
+    const {symbols} = req.query;
+    const stock_name = res.locals.price['result'][0]['shortName'];
+    const bought_price = res.locals.price['result'][0]['ask'];
     const values = [user_id, symbols, stock_name, bought_price]
     const insertTransaction = `INSERT INTO transactions (user_id, stock_ticker, stock_name, bought_price)
       VALUES ($1, $2, $3, $4)
