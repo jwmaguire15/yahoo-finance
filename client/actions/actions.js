@@ -58,7 +58,7 @@ export const sellStock = (data) => (dispatch) => {
     data: {transaction_id},
     params: {region: 'US', symbols: ticker}
   }
-  // [{"transaction_id":6,"user_id":1,"stock_name":"Apple Inc.","bought_price":"$151.32","bought_time":"2021-11-04T04:00:00.000Z","sold_price":"$150.66","sold_time":"2021-11-04T04:00:00.000Z","stock_ticker":"aapl"}]
+  
   axios.request(options).then((response) => {
     if(response.status = 201) dispatch({
       type: types.SELL_STOCK,

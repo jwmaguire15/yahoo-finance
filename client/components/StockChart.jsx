@@ -4,7 +4,7 @@
  * @module  StockChart
  * @author
  * @date
- * @description Simple presentation component that shows a bold label next to plain text
+ * @description Simple presentation component that shows chart
  *
  * ************************************
  */
@@ -12,7 +12,7 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-// TODO - get Y AXIS to re-size
+
 const StockChart = (chartData) => (
   <ResponsiveContainer width={'100%'} height={250}>
     <LineChart data={chartData}

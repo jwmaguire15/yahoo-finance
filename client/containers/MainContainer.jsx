@@ -9,33 +9,29 @@
  * ************************************
  */
 
- import React from 'react';
- import { connect } from 'react-redux';
-//  import TotalsDisplay from '../components/TotalsDisplay';
-//  import MarketsContainer from './MarketsContainer';
- import * as actions from '../actions/actions';
+import React from 'react';
+import { connect } from 'react-redux';
 import OrdersContainer from './OrdersContainer';
-import PortfolioContainer from './PortfolioContainer';
 import SearchContainer from './SearchContainer';
 import TransactionsContainer from './TransactionsContainer';
- 
- const mapStateToProps = () => ({
-   
- })
 
- const mapDispatchToProps = () => ({
+const mapStateToProps = () => ({
 
- })
+})
 
- const MainContainer = () => (
-   <div className="container">
-     <div className="outerBox">
-       <h1 className="header">Stock Portfolio Management</h1>
-       <OrdersContainer></OrdersContainer>
-       <SearchContainer></SearchContainer>
-       <TransactionsContainer></TransactionsContainer>
-     </div>
-   </div>
- )
+const mapDispatchToProps = () => ({
 
- export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+})
+
+const MainContainer = () => (
+  <div className="container">
+    <div className="outerBox">
+      <h1 className="header">Stock Portfolio Management</h1>
+      <OrdersContainer></OrdersContainer>
+      <SearchContainer></SearchContainer>
+      <TransactionsContainer></TransactionsContainer>
+    </div>
+  </div>
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

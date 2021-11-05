@@ -9,7 +9,6 @@ const transactionController = {};
 // 2. return the new transaction to the client
 transactionController.postTransaction = async (req, res, next) => {
   try {
-    // to do get these values off the req and the res.locals
     const {user_id}= req.body;
     const {symbols} = req.query;
     const stock_name = res.locals.price['result'][0]['shortName'];
@@ -48,7 +47,6 @@ transactionController.getBuys = async (req, res, next) => {
 
 transactionController.putSale = async (req, res, next) => {
   try {
-    // to do get these values off the req and the res.locals
     const {transaction_id}= req.body;
     const sold_price = res.locals.price['result'][0]['bid'];
 

@@ -1,7 +1,7 @@
 /**
  * ************************************
  *
- * @module  PortfolioContainer
+ * @module  SearchContainer
  * @author
  * @date
  * @description component that renders Search and graph
@@ -22,11 +22,6 @@ const mapStateToProps = ({ stocks }) => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
-// ({
-//   updateSearch: (data) => dispatch(actions.updateSearch(data)),
-//   buyStock: () => dispatch(actions.buyStock()),
-// });
 
 const SearchContainer = (props) => (
   <div className="searchContainer">

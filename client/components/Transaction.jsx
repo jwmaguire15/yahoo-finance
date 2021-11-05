@@ -10,7 +10,6 @@
  */
 
  import React from 'react';
- import LabeledText from './LabeledText';
 
  const Transaction = ({
    stock_ticker,
