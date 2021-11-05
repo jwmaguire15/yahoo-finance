@@ -22,7 +22,7 @@
       <text>{ticker}</text>
       <text>{price}</text>
       <text>{timestamp.slice(0,7)}</text>
-      <button id={transaction_id} onClick={e => sellStock(e.target.id)}>Sell</button>
+      <button onClick={e => sellStock({ticker, transaction_id})}>Sell</button>
    </li>
  );
  

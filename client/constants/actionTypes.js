@@ -20,5 +20,6 @@
  export const SELL_STOCK = 'SELL_STOCK'
  export const SEARCH_STOCK = 'SEARCH_STOCK'
  export const UPDATE_RANGE = 'UPDATE_RANGE'
+ export const LOAD_DATA = 'LOAD_DATA'
  
 //  export const LOAD_MARKETS = 'LOAD_MARKETS';

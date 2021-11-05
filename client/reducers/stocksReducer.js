@@ -17,15 +17,7 @@ const initialState = {
   chartData: [],
   user_id: 1,
   orderList: [],
-  transactionList: [
-    {
-      ticker: 'ABC',
-      type: 'SELL',
-      price: 100,
-      timestamp: new Date(Date.now()).toJSON(),
-      expiration: '1/2/2021'
-    },
-  ],
+  transactionList: [],
   stockList: [],
 };
 
@@ -51,7 +43,7 @@ const stocksReducer = (state = initialState, action) => {
       action.payload.forEach(el => {
         const { transaction_id, stock_ticker, bought_price, bought_time } = el;
         orderList.unshift({
-          id: transaction_id,
+          transaction_id: transaction_id,
           ticker: stock_ticker,
           price: bought_price,
           timestamp: bought_time,
@@ -61,7 +53,31 @@ const stocksReducer = (state = initialState, action) => {
         ...state,
         orderList,
       }
+    }
 
+    case types.SELL_STOCK: {
+      let orderList = state.orderList.slice();
+      const transactionList = state.transactionList.slice();
+      // {"transaction_id":6,"user_id":1,"stock_name":"Apple Inc.","bought_price":"$151.32","bought_time":"2021-11-04T04:00:00.000Z","sold_price":null,"sold_time":null,"stock_ticker":"aapl"}]
+      action.payload.forEach(el => {
+        const {transaction_id, stock_ticker, bought_price, sold_price, sold_time} = el;
+        orderList = orderList.filter(el => el.transaction_id != transaction_id)
+        const gain = `\$${Number.parseFloat(Number(sold_price.slice(1)) - Number(bought_price.slice(1))).toFixed(2)}`;
+        console.log(gain)
+        transactionList.unshift({
+          transaction_id,
+          stock_ticker,
+          bought_price,
+          sold_price,
+          sold_time,
+          gain,
+        })
+      })
+      return {
+        ...state,
+        orderList,
+        transactionList,
+      }
     }
 
     case types.SEARCH_STOCK: {

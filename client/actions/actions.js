@@ -44,18 +44,21 @@ export const buyStock = () => (dispatch, getState) => {
   // hit reducer to update state with the new query of all transactions...
 };
 
-export const sellStock = (transaction_id) => (dispatch, getState) => {
+export const sellStock = (data) => (dispatch) => {
   // grab the symbol from state
+  
+  const {ticker, transaction_id} = data;
+  
+  console.log(ticker);
   console.log(transaction_id);
-  
-  const user_id = getState().stocks.user_id;
-  
+
   const options = {
     method: 'PUT',
     url: '/transaction',
-    data: {user_id, transaction_id},
+    data: {transaction_id},
+    params: {region: 'US', symbols: ticker}
   }
-  
+  // [{"transaction_id":6,"user_id":1,"stock_name":"Apple Inc.","bought_price":"$151.32","bought_time":"2021-11-04T04:00:00.000Z","sold_price":"$150.66","sold_time":"2021-11-04T04:00:00.000Z","stock_ticker":"aapl"}]
   axios.request(options).then((response) => {
     if(response.status = 201) dispatch({
       type: types.SELL_STOCK,
@@ -71,7 +74,7 @@ export const searchStock = () => (dispatch, getState) => {
   const range = getState().stocks.range;
   let ivl = '1d';
   if(range.includes('d') && range != 'ytd') ivl = '5m';
-  console.log('vars:', ivl, sym, range)
+  
   const options = {
     method: 'GET',
     url: '/search',
@@ -97,9 +100,15 @@ export const loadData = () => (dispatch, getState) => {
     params: {user_id},
   }
   axios.request(options).then((response) => {
-    if(response.status = 201) dispatch({
-      type: types.BUY_STOCK,
-      payload: response.data,
-    });
+    if(response.status = 201) {
+      dispatch({
+        type: types.BUY_STOCK,
+        payload: response.data['buys'],
+      });
+      dispatch({
+        type: types.SELL_STOCK,
+        payload: response.data['sells'],
+      });
+    }
   }).catch(console.error);
 };

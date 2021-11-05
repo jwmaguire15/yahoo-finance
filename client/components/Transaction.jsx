@@ -13,18 +13,19 @@
  import LabeledText from './LabeledText';
 
  const Transaction = ({
-   ticker,
-   type,
-   price,
-   timestamp,
+   stock_ticker,
+   bought_price,
+   sold_price,
+   sold_time,
+   gain,
  }) => (
   <li className="order">
      
-      <text>{ticker}</text>
-      <text>{price}</text>
-      <text>{price}</text>
-      <text>{timestamp.slice(0,7)}</text>
-      <text>{price}</text>
+      <text>{stock_ticker}</text>
+      <text>{bought_price}</text>
+      <text>{sold_price}</text>
+      <text>{gain}</text>
+      <text>{sold_time.slice(0,7)}</text>
      
    </li>
  );

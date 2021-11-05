@@ -22,8 +22,8 @@ const mapStateToProps = ({stocks}) => ({
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 const transactionMaker = (el, i) => {
-  const { ticker, type, price, timestamp } = el;
-  return <Transaction ticker={ticker} type={type} price={price} timestamp={timestamp} key={i.toString()} />
+  const { stock_ticker, bought_price, sold_price, sold_time, gain } = el;
+  return <Transaction stock_ticker={stock_ticker} bought_price={bought_price} sold_price={sold_price} sold_time={sold_time} gain={gain} key={i.toString()} />
 };
 
 const TransactionsContainer = (props) => (
@@ -34,8 +34,8 @@ const TransactionsContainer = (props) => (
         <strong>Ticker</strong>
         <strong>Basis</strong>
         <strong>Price</strong>
-        <strong>Time</strong>
         <strong>Gain</strong>
+        <strong>Time</strong>
       </span>
     </div>
     <ul>

@@ -35,6 +35,7 @@ transactionController.getBuys = async (req, res, next) => {
     const values = [user_id]
     const insertTransaction = `
     SELECT * FROM transactions WHERE user_id = $1
+    AND sold_price isnull
     `;
     const reply = await db.query(insertTransaction, values);
     res.locals.buys = reply.rows;
@@ -45,14 +46,44 @@ transactionController.getBuys = async (req, res, next) => {
   }
 }
 
-// should get all sells
-transactionController.getSells = async (req, res, next) => {
+transactionController.putSale = async (req, res, next) => {
+  try {
+    // to do get these values off the req and the res.locals
+    const {transaction_id}= req.body;
+    const sold_price = res.locals.price['result'][0]['bid'];
 
+    const values = [transaction_id, sold_price, new Date(Date.now()).toISOString()]
+    const updateTransaction = `UPDATE transactions 
+      SET sold_price = $2,
+        sold_time = $3
+      WHERE transaction_id = $1
+      RETURNING *`;
+    const reply = await db.query(updateTransaction, values);
+    res.locals.sells = reply.rows;
+    return next();
+  }
+  catch(err) {
+    console.error()
+    return next(err);
+  }
 }
 
-// should get all transactions that aren't sold, grouped by stock name, ave price
-transactionController.getPortfolio = async (req, res, next) => {
-
+// should get all sells
+transactionController.getSells = async (req, res, next) => {
+  try {
+    const {user_id}= req.query;
+    const values = [user_id]
+    const insertTransaction = `
+    SELECT * FROM transactions WHERE user_id = $1
+    AND sold_price IS NOT NULL
+    `;
+    const reply = await db.query(insertTransaction, values);
+    res.locals.sells = reply.rows;
+    return next();
+  }
+  catch(err) {
+    return next(err)
+  }
 }
 
 module.exports = transactionController;

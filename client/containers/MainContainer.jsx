@@ -34,7 +34,6 @@ import TransactionsContainer from './TransactionsContainer';
        <OrdersContainer></OrdersContainer>
        <SearchContainer></SearchContainer>
        <TransactionsContainer></TransactionsContainer>
-       <PortfolioContainer></PortfolioContainer>
      </div>
    </div>
  )
